@@ -1,0 +1,29 @@
+{
+  "name": "collaborationbot",
+  "version": "0.1.0",
+  "description": "Bot for our couple discord server. Tracks, gives statistics, and posts all kinds of useful information.",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "config": "^3.3.9",
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js &"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ginja97/CollaborationBot.git"
+  },
+  "author": "Nicolas Pusch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ginja97/CollaborationBot/issues"
+  },
+  "homepage": "https://github.com/Ginja97/CollaborationBot#readme"
+}
