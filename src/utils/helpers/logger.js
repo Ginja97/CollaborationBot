@@ -1,5 +1,5 @@
 const fs = require('fs')
-const logfiles_path = './logs/date_logs/'
+const logfiles_path = './logs/'
 const path = require('path')
 const datetime_helpers = require('./datetime_helpers')
 
@@ -14,15 +14,17 @@ function logRequestLocal(
 }
 
 
-function logString(str, console_log = true) {
+function logString(str, console_log = true, use_time = true) {
     let time = datetime_helpers.getDateTime(precise = true)
-    str = time + ' ' + str
-    if (console_log) {
+
+    if (use_time)
+        str = time + ' ' + str
+
+    if (console_log)
         console.log(str)
-    }
-    if (str && str[str.length - 1] != '\n') {
+
+    if (str && str[str.length - 1] != '\n')
         str += '\n'
-    }
 
     let date = new Date()
     let filepath = path.join(logfiles_path, datetime_helpers.getCurrentYear(), '/',/* datetime_helpers.getCurrentMonth(), '/',*/ dateToFilename(date)) //TODO change to date helper
@@ -37,7 +39,7 @@ function logString(str, console_log = true) {
             // }
             fs.appendFile(filepath, str, (err) => {
                 if (err) {
-                    console.log('Fehler beim Schreiben in die Log-Datei.' + err.message)
+                    console.log("Error when writing into log file." + err.message)
                 }
             })
         }
