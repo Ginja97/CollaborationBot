@@ -1,5 +1,7 @@
+const commands = require("./commands")
+
 class Task {
-    constructor(command, startdate) {}
+    constructor(command_alias, startdate) {}
 }
 
 module.export = Task
