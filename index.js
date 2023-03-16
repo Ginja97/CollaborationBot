@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyparser = require('body-parser')
-const log = require('./src/utils/helpers/logger')
+const log = require('./src/utils/logger')
 
 const port = 3100
 
