@@ -1,5 +1,5 @@
 class Task {
-    constructor(method, startdate) {}
+    constructor(command, startdate) {}
 }
 
 module.export = Task
