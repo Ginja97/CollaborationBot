@@ -1,4 +1,5 @@
 # TODO
+- get connection to rds db working
 - make task scheduler singleton
 
 # Pineline
