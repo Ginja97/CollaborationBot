@@ -1,3 +1,6 @@
+# TODO
+- make task scheduler singleton
+
 # Pineline
 
 ## Create Auto Scheduler - every x seconds/minutes check if tasks are to be done
