@@ -4,6 +4,4 @@ const pgp = pgPromise()
 
 const CollaborationDB = pgp(config.collaboration_db_config)
 
-module.exports = {
-    CollaborationDB
-}
+module.exports = CollaborationDB
