@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const config = {
     port: process.env.PORT || 3001,
-    redditUsername: procedd.env.REDDIT_USERNAME,
+    redditUsername: process.env.REDDIT_USERNAME,
     redditPassword: process.env.REDDIT_PASSWORD,
     honeygain_cookies: process.env.HONEYGAIN_COOKIES,
     genshinCookiesMe: process.env.GENSHIN_COOKIES_ME,
