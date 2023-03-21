@@ -1,4 +1,4 @@
-const config = require("../config/config")
+const config = require('../config/config')
 const pgPromise = require('pg-promise')
 const pgp = pgPromise()
 

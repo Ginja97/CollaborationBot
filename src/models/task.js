@@ -1,4 +1,4 @@
-const commands = require("./commands")
+const commands = require('./commands')
 
 class Task {
     constructor(command_alias, startdate) {}
