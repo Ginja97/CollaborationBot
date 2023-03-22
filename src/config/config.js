@@ -7,10 +7,11 @@ const config = {
     honeygain_cookies: process.env.HONEYGAIN_COOKIES,
     genshinCookiesMe: process.env.GENSHIN_COOKIES_ME,
     genshinCookiesSasha: process.env.GENSHIN_COOKIES_SASHA,
-    collaboration_db_config: {
-        database: 'postgres',
-        port: 5432,
-        user: process.env.DB_USER,
+    // pg-promise options
+    collaborationDbConfig: {
+        database: process.env.DB_DATABASE,
+        port: process.env.DB_PORT,
+        user: process.env.DB_USERNAME,
         password: process.env.DB_PASSWORD,
         host: process.env.DB_HOSTNAME,
         keepAlive: 'true',
