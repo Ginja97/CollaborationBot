@@ -14,13 +14,13 @@ function logRequestLocal(
 }
 
 
-function logString(str, console_log = true, use_time = true) {
+function logString(str, consoleLog = true, useTime = true) {
     let time = datetime_helpers.getDateTime(precise = true)
 
-    if (use_time)
+    if (useTime)
         str = time + ' ' + str
 
-    if (console_log)
+    if (consoleLog)
         console.log(str)
 
     if (str && str[str.length - 1] != '\n')
