@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const config = {
+    apiToken: process.env.API_TOKEN,
     port: process.env.PORT || 3001,
     redditUsername: process.env.REDDIT_USERNAME,
     redditPassword: process.env.REDDIT_PASSWORD,

@@ -7,10 +7,10 @@ const config = require('../../config/config')
 
 router.post('/', (req,res) => {
     TaskScheduler.getTasksSorted(10)
+    req.headers.get
     .then( value => {
-        console.log(value);
+        res.send(value);
     })
-    res.sendStatus(200)
 })
 
 module.exports = router

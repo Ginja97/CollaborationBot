@@ -1,6 +1,5 @@
 # TODO
-- get connection to rds db working
-- make task scheduler singleton
+- 
 
 # Pineline
 
@@ -47,3 +46,6 @@
 
 ## Date Roller
 - roll a random number and choses a random date (out of a customizable list)
+
+## True Safety
+- implement JWT
