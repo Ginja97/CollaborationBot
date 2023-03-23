@@ -6,19 +6,18 @@ const datetime_helpers = require('./datetime_helpers')
 /**
  * saves a request to the local database
  */
-function logRequestLocal(
-    request_method,
-    endpoint,
+function logRequest(
+    req
 ) {
-    logString(`[LOG REQUEST] [${request_method}] @ ${endpoint}`)
+    logString('[LOG REQUEST]', `[${req.method}] @ ${req.originalUrl}`)
 }
 
 
-function logString(str, consoleLog = true, useTime = true) {
+function logString(origin, str, consoleLog = true, useTime = true) {
     let time = datetime_helpers.getDateTime(precise = true)
 
     if (useTime)
-        str = time + ' ' + str
+        str = `${time} ${origin} ${str}`
 
     if (consoleLog)
         console.log(str)
@@ -67,6 +66,6 @@ function zeroPad(toPad, n) {
 }
 
 module.exports = {
-    logRequestLocal,
+    logRequest,
     logString,
 }

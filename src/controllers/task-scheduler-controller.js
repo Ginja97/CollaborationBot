@@ -25,7 +25,7 @@ class TaskScheduler{
                })
                .catch((error) => {
                    if (error instanceof pgp.errors.QueryFileError) {
-                       log.logString("[TASK SCHEDULER] Error with Query File")
+                       log.logString('[TASK SCHEDULER]', "Error with Query File")
                    }
                    else {
                        throw error
