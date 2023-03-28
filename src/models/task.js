@@ -9,6 +9,20 @@ class Task {
         this.payload = payload
         this.callback_id = callback_id
     }
+
+    hasRequest(requestObj) {
+        if (
+            this.method == requestObj.method &&
+            this.url == requestObj.url &&
+            this.headers == requestObj.headers &&
+            this.payload == requestObj.payload &&
+            this.callback_id == requestObj.callback_id
+        ) {
+            return true
+        }
+        
+        return false
+    }
 }
 
 module.exports = Task
