@@ -42,9 +42,10 @@ function getCurrentMonth(date) {
     return zeroPad("" + ((new Date()).getMonth() + 1), 2)
 }
 
-function konnektor_time_to_timestamp(str) {
-    return str.replace('T',' ');
+function addSecondsToDate(date, seconds) {
+    return new Date(date.getTime() + seconds)
 }
+
 
 function zeroPad(toPad, n) {
     paddedStr = toPad.toString()
@@ -56,7 +57,7 @@ function zeroPad(toPad, n) {
 
 module.exports = {
     getDateTime,
-    konnektor_time_to_timestamp,
     getCurrentYear,
-    getCurrentMonth
+    getCurrentMonth,
+    addSecondsToDate
 }
