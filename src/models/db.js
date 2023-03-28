@@ -4,6 +4,6 @@ const pgPromise = require('pg-promise')
 const pgp = pgPromise()
 
 const collaborationDb = pgp(config.collaborationDbConfig)
-log.logString('[INFO]', "Connection to Collaboration DB established successfully.")
+log.logString('[INFO]', "Connection to Collaboration-DB on RDS established successfully.")
 
 module.exports = collaborationDb
