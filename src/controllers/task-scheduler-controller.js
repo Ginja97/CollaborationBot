@@ -32,6 +32,8 @@ class TaskScheduler{
                    }
                })
     }
+
+    static pushNewTask()
 }
 
 module.exports = TaskScheduler
