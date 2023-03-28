@@ -6,8 +6,8 @@ const config = require('../../config/config')
 
 
 router.post('/', (req,res) => {
-    TaskScheduler.getTasksSorted(10)
     req.headers.get
+    TaskScheduler.getTasksSorted(10)
     .then( value => {
         res.send(value);
     })

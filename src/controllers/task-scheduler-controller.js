@@ -2,6 +2,8 @@ const path = require('path')
 const pgp = require('pg-promise')
 const collaborationDb = require('../models/db')
 const log = require('../utils/logger')
+const Task = require('../models/task')
+
 
 // Create Queryfiles
 function readSql(file) {
@@ -20,20 +22,28 @@ class TaskScheduler{
 
     static getTasksSorted(limit) {
         return collaborationDb.manyOrNone(sqlGetTasksSorted, {limit: limit})
-               .then((value) => {
-                   return value
+               .then((data) => {
+                    let taskList = []
+                    for (const task of data) {
+                        taskList.push(
+                            new Task(task.task_id, task.startdate, task.request_id, task.method, task.url, task.headers, task.payload, task.callback_id)
+                        )
+                    }
+                    return taskList
                })
                .catch((error) => {
-                   if (error instanceof pgp.errors.QueryFileError) {
-                       log.logString('[TASK SCHEDULER]', "Error with Query File")
-                   }
-                   else {
-                       throw error
-                   }
+                    if (error instanceof pgp.errors.QueryFileError) {
+                        log.logString('[TASK SCHEDULER]', "Error with Query File")
+                    }
+                    else {
+                        throw error
+                    }
                })
     }
 
-    static pushNewTask()
+    static pushNewTask() {
+
+    }
 }
 
 module.exports = TaskScheduler
