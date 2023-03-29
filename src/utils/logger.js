@@ -1,7 +1,7 @@
 const fs = require('fs')
 const logfiles_path = './logs/'
 const path = require('path')
-const datetime_helpers = require('./datetime_helpers')
+const datetimeHelpers = require('./datetime-helpers')
 
 /**
  * saves a request to the local database
@@ -14,7 +14,7 @@ function logRequest(
 
 
 function logString(origin, str, consoleLog = true, useTime = true) {
-    let time = datetime_helpers.getDateTime(precise = true)
+    let time = datetimeHelpers.getDateTime(precise = true)
 
     if (useTime)
         str = `${time} ${origin} ${str}`
@@ -26,15 +26,15 @@ function logString(origin, str, consoleLog = true, useTime = true) {
         str += '\n'
 
     let date = new Date()
-    let filepath = path.join(logfiles_path, datetime_helpers.getCurrentYear(), '/',/* datetime_helpers.getCurrentMonth(), '/',*/ dateToFilename(date)) //TODO change to date helper
+    let filepath = path.join(logfiles_path, datetimeHelpers.getCurrentYear(), '/',/* datetimeHelpers.getCurrentMonth(), '/',*/ dateToFilename(date)) //TODO change to date helper
 
     fs.appendFile(filepath, str, (err) => {
         if (err) {
-            if (!fs.existsSync(path.join(logfiles_path, datetime_helpers.getCurrentYear()))){
-                fs.mkdirSync(path.join(logfiles_path, datetime_helpers.getCurrentYear()));
+            if (!fs.existsSync(path.join(logfiles_path, datetimeHelpers.getCurrentYear()))){
+                fs.mkdirSync(path.join(logfiles_path, datetimeHelpers.getCurrentYear()));
             }
-            // if (!fs.existsSync(path.join(logfiles_path, datetime_helpers.getCurrentYear(), '/', datetime_helpers.getCurrentMonth()))){
-            //     fs.mkdirSync(path.join(logfiles_path, datetime_helpers.getCurrentYear(), '/', datetime_helpers.getCurrentMonth()));
+            // if (!fs.existsSync(path.join(logfiles_path, datetimeHelpers.getCurrentYear(), '/', datetimeHelpers.getCurrentMonth()))){
+            //     fs.mkdirSync(path.join(logfiles_path, datetimeHelpers.getCurrentYear(), '/', datetimeHelpers.getCurrentMonth()));
             // }
             fs.appendFile(filepath, str, (err) => {
                 if (err) {
