@@ -11,5 +11,5 @@ app.use(bodyparser.json({ extended: false}))
 app.use('/', require('./src/routes'))
 
 app.listen(port, () => {
-    log.logString('[INFO]', `Server started on port ${port}`)
+    log.logString('[SERVER]', `Server started on port ${port}`)
 })

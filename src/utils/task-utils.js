@@ -6,8 +6,8 @@ function makeTaskFromRequest(reqBody) {
         null, 
         reqBody.startdate, 
         null, 
-        reqBody.method, 
-        reqBody.url, 
+        reqBody.method ? reqBody.method : "GET", 
+        reqBody.url ? reqBody.url : "google.com", 
         reqBody.headers ? reqBody.headers : {}, 
         reqBody.payload ? reqBody.payload : {}, 
         reqBody.callback_id ? reqBody.callback_id : 0

@@ -23,6 +23,10 @@ class Task {
         
         return false
     }
+
+    toString() {
+        return `${this.method} @ ${this.url} @ ${this.startdate}`
+    }
 }
 
 module.exports = Task
