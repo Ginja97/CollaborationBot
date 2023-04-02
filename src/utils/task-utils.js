@@ -9,7 +9,7 @@ function makeTaskFromRequest(reqBody) {
         reqBody.method ? reqBody.method : "GET", 
         reqBody.url ? reqBody.url : "google.com", 
         reqBody.headers ? reqBody.headers : {}, 
-        reqBody.payload ? reqBody.payload : {}, 
+        reqBody.body ? reqBody.body : {}, 
         reqBody.callback_id ? reqBody.callback_id : 0
     )
 }

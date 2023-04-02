@@ -3,7 +3,6 @@ const pgp = require('pg-promise')
 const collaborationDb = require('../models/db')
 const log = require('../utils/logger')
 const Task = require('../models/task')
-const { request } = require('http')
 const pgPromise = require('pg-promise')
 
 
@@ -34,7 +33,7 @@ class TaskScheduler{
                     let taskList = []
                     for (const task of tasks) {
                         taskList.push(
-                            new Task(task.task_id, task.startdate, task.request_id, task.method, task.url, task.headers, task.payload, task.callback_id)
+                            new Task(task.task_id, task.startdate, task.request_id, task.method, task.url, task.headers, task.body, task.callback_id)
                         )
                     }
                     return taskList
@@ -51,11 +50,10 @@ class TaskScheduler{
 
     static pushNewTask(task) {
         // try inserting request
-        console.log(sqlInsertNewRequest);
-        return collaborationDb.one(sqlInsertNewRequest, {method: task.method, url: task.url, headers: task.headers, payload: task.payload, callback_id: task.callback_id})
+        return collaborationDb.one(sqlInsertNewRequest, {method: task.method, url: task.url, headers: task.headers, body: task.body, callback_id: task.callback_id})
                 .catch(error => {
-                    if (error.code === '23505') {
-                        return collaborationDb.one(sqlGetRequestIDWhere, {method: task.method, url: task.url, headers: task.headers, payload: task.payload})
+                    if (error.code === pgPromise.errors.queryResultErrorCode.noData) {
+                        return collaborationDb.one(sqlGetRequestIDWhere, {method: task.method, url: task.url, headers: task.headers, body: task.body})
                     }
                     throw error
                 })
