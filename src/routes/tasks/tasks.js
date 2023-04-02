@@ -17,8 +17,12 @@ router.get('/:amount', (req, res) => {
 
 router.post('/', (req,res) => {
     let task = taskUtils.makeTaskFromRequest(req.body)
-    TaskScheduler.pushNewTask(task)
-    res.status(201).send()
+    TaskScheduler.pushNewTask(task).then(() => {
+        res.status(201).json(task)
+    })
+    .catch(() => {
+        res.status(500).send()
+    })
 })
 
 

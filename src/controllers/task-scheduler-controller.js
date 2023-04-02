@@ -27,6 +27,8 @@ class TaskScheduler{
     }
 
     static getTasksSorted(limit) {
+        // returns a Promise of an list of sorted Tasks (earliest Task is first)
+        // TODO: use caching
         return collaborationDb.manyOrNone(sqlGetTasksSorted, {limit: limit})
                .then((tasks) => {
                     let taskList = []
@@ -55,7 +57,7 @@ class TaskScheduler{
                     if (error.code === '23505') {
                         return collaborationDb.one(sqlGetRequestIDWhere, {method: task.method, url: task.url, headers: task.headers, payload: task.payload})
                     }
-                    throw new Error("Unexpected error when trying to insert new Request.")
+                    throw error
                 })
                 .then((request_id_row) => {
                     // request exists in database
@@ -74,6 +76,13 @@ class TaskScheduler{
                 })
                 .then(() => {
                     log.logString('[TS][PUSH TASK][INFO]', "new task pushed into queue: " + task.toString())
+                })
+    }
+
+    static popNewTask() {
+        return this.getTasksSorted(1)
+                .then((taskList) => {
+                    return taskList.pop()
                 })
     }
 }
